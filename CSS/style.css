@@ -1,0 +1,140 @@
+body {
+  font-size: 20px;
+  font-family: Monaco serif;
+  background-color: #dfdfdf;
+}
+
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+ul,
+li,
+ol,
+a {
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+.img {
+  display: block;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
+  width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 170px;
+  background-color: #f9f9fd;
+  text-align: left;
+}
+
+.title {
+  padding: 0;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.information {
+  width: 1260px;
+  display: block;
+
+  border-radius: 8px;
+  color: white;
+  padding: 10px;
+  margin-top: 10px;
+
+  background-color: rgb(66, 66, 66);
+}
+
+.squaere {
+  background-color: tomato;
+  width: 250px;
+  height: 250px;
+  border: 1px solid black;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  padding: 10px;
+  position: relative;
+  /* opacity: 10%; */
+}
+
+
+.figure {
+  background-image: url(../image/squaere.png);
+  background-repeat: no-repeat;
+  /* background-position: 100px 20px; */
+  /* background-size: 200px 250px; */
+}
+
+.contain {
+  width: 200px;
+  /* background-size: contain; */
+  background-size: cover;
+}
+
+/* ======== attachment ==== */
+
+.attachment {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px;
+  background-image: url("https://cdn.pixabay.com/photo/2020/10/07/10/51/mountains-5634817_1280.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  background-attachment: scroll;
+  border-radius: 8px;
+}
+
+.box {
+  width: 200px;
+  height: 300px;
+  border-radius: 8px;
+}
+
+.box:nth-child(1) {
+  background-color: tomato;
+}
+
+.box:nth-child(2) {
+  background-color: teal;
+}
+
+.box:nth-child(3) {
+  background-color: green;
+}
+
+.box:nth-child(4) {
+  background-color: white;
+}
+
+.box:nth-child(5) {
+  background-color: black;
+}
+
+.multi {
+  width: 150px;
+  height: 150px;
+  background-image: url(../image/squaere-blue.png), url(../image/squaere-yellow.png), url(../image/squaere.png);
+  background-size: 50px, 50px, 50px, cover;
+  background-repeat: no-repeat;
+  background-position: top 20px right 30px, top 40px left 30px, bottom 45px right 30px;
+}
