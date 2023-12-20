@@ -227,6 +227,196 @@
           отдельных картинок, и браузеру будет необходимо сделать 1 запрос
           вместо 4, что так же увеличит скорость загрузки отображения страницы.
         </p>
+        <h2 class="title">Свойство background</h2>
+        <p>
+          Составное свойство для одновременного задания значений всех
+          рассмотреных свойств <br />
+          <b
+            >background: background-color background-image background-repeat
+            background-position background-attachment</b
+          >
+          <br />
+          Если кайо-то компонент не указан, будет взято его значение по
+          умолчанию.
+        </p>
+        <ul>
+          <p>Установит только цвет фона</p>
+          <li><b>background: #fafafaf</b></li>
+          <p>
+            Прозрачный цвет фона повторяющийся по <b>Х</b> картинкой начиная с
+            верхнего левого угла
+          </p>
+          <li><b>background: url("../адрес картинки") repeat-x</b></li>
+        </ul>
+        <p class="information">
+          Рекомендуется, как минимум в начале, использовать отдельный способ для
+          каждого значения т.к с составным background можно легко запутаться
+        </p>
+        <h2 class="title">Свойство object-fit и object-position</h2>
+        <p>
+          Бывают ситуации, когда контентное изображение больше или меньше, чем
+          контейнер, в который его необходимо поместить или изображение имеет
+          другие пропорции. Например, частая задача карточных товаров (это тумба
+          фиксированой высоты в которой небходимо вместить фото товара
+          произвольного размера, т.е подогнать картинку под контейнер)
+        </p>
+        <h3>Свойство object-fit</h3>
+        <p>
+          Определяет каким образом содержимое <b>&lt;img&gt;</b> (или
+          <b>&lt;video&gt;</b>) будет вмещаться в контейнер, когда их размеры
+          или пропорции не совпадают. Свойство object-fit обрезает, растягивает
+          или масштабирует контентное изображение. Это похоже на background-size
+          но для контентніх изображений <br />
+          <br />
+          <b>object-fit: fill | contain | cover | scale-down | none</b> <br />
+        </p>
+        <ul>
+          <li>
+            <b>fill</b> - изображение масштабируется без сохранения пропорций,
+            чтобы полностью заполнить контейнер. <b>Значение по умолчанию</b>
+          </li>
+          <li>
+            <b>contain</b> - изображение масштабируется с сохранением пропорций,
+            чтобы заполнить контейнер
+          </li>
+          <li>
+            <b>cover</b> - изображение масштабируется с сохранением пропорций,
+            чтобы полностью заполнить контейнер
+          </li>
+          <li>
+            <b>scale-down</b> - будет выбрано значение none или contain чтобы
+            изображение было наименьшего размера
+          </li>
+          <li>
+            <b>none</b> - сохраняются исходные размеры изображения, заданая
+            высота и ширина не имеют эффекта
+          </li>
+        </ul>
+        <figure class="base">
+          <img src="./image/cat.jpeg" alt="" />
+          <figcaption class="lable">Original image</figcaption>
+        </figure>
+        <div class="card-set">
+          <figure class="card">
+            <div class="obj__box">
+              <img src="./image/cat.jpeg" alt="" />
+            </div>
+            <figcaption class="lable">Object-fit: fill</figcaption>
+          </figure>
+          <figure class="card">
+            <div class="obj__box">
+              <img src="./image/cat.jpeg" alt="" />
+            </div>
+            <figcaption class="lable">Object-fit: contain</figcaption>
+          </figure>
+          <figure class="card">
+            <div class="obj__box">
+              <img src="./image/cat.jpeg" alt="" />
+            </div>
+            <figcaption class="lable">Object-fit: cover</figcaption>
+          </figure>
+          <figure class="card">
+            <div class="obj__box">
+              <img src="./image/cat.jpeg" alt="" />
+            </div>
+            <figcaption class="lable">Object-fit: scale-down</figcaption>
+          </figure>
+          <figure class="card">
+            <div class="obj__box">
+              <img src="./image/cat.jpeg" alt="" />
+            </div>
+            <figcaption class="lable">Object-fit: none</figcaption>
+          </figure>
+        </div>
+        <p>
+          Для того чтобы эта техника работала небходимо 2 обязательных шага
+          <br />
+          &lt;div class=&quot;obj__box&quot;&gt; <br />
+          &lt;img src=&quot;&quot; alt=&quot;&quot; /&gt; <br />&lt;/div&gt;
+          <br />
+          Первый - у контейнера obj__box должна быть явно указана фиксированая
+          высота, ширина может быть по ширине родителя как в примере
+          <br />
+          .obj__box { <br />
+          height: 400px; <br />
+          width: 300px;<br />
+          }<br />
+          Второй - изображение необходимо вместить в контейнер задав высоту и
+          ширину 100%
+          <br />
+          .obj__box > img { <br />
+          display: block; <br />
+          height: 100%; <br />
+          width: 100%; <br />
+          }
+        </p>
+        <p>
+          После этого к изображению можно применить свойство object-fit
+          <br />
+          .obj__box > img { <br />
+          display: block; <br />
+          height: 100%; <br />width: 100%;<br />
+          object-fit: cover; <br />
+          }
+        </p>
+        <p class="information">
+          Можно не использовать obj__box задав фиксированые размеры самому
+          элементу <b>&lt;img /&gt;</b>, но чаще всего мы столкнемся именно с
+          такой разметкой. obj__box служит контейнером для создания анимаций и
+          других дукоративных эффектов связаных с областью изображения
+        </p>
+        <h2 class="title">Свойство object-position</h2>
+        <p>
+          Дополняет свойство object-fit, позволяет задать положение изображения
+          в контейнере по оси Х и У. Это похоже на background-position, но для
+          контентных изображений. <br />
+          <b>object-position: position initial inherit</b> <br />
+          Значением свойства могут быть зарезервированые слова абсолютные или
+          относительные еденицы измерения. По умолчанию значение 50% 50%, т.е
+          вертикально и горизонтально по центру.
+        </p>
+        <div class="card-set">
+          <figure class="card__one">
+            <div class="obj__box">
+              <img src="./image/cat.jpeg" alt="" />
+            </div>
+            <figcaption class="lable">
+              <span>object-fit: fill</span><span>object-position: 50% 50%</span>
+            </figcaption>
+          </figure>
+          <figure class="card__two">
+            <div class="obj__box">
+              <img src="./image/cat.jpeg" alt="" />
+            </div>
+            <figcaption class="lable">
+              <span>object-fit: contain</span
+              ><span
+                >object-position: left bottom (он прижмежмется слева
+                внизу)</span
+              >
+            </figcaption>
+          </figure>
+          <figure class="card__three">
+            <div class="obj__box">
+              <img src="./image/cat.jpeg" alt="" />
+            </div>
+            <figcaption class="lable">
+              <span>object-fit: cover</span
+              ><span>object-position: 20% 30px</span>
+            </figcaption>
+          </figure>
+          <figure class="card__four">
+            <div class="obj__box">
+              <img src="./image/cat.jpeg" alt="" />
+            </div>
+            <figcaption class="lable">
+              <span>object-fit: scale-down</span
+              ><span>object-position: right top (прижмется вправо вверх)</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="liner"></div>
       </div>
     </header>
   </body>
